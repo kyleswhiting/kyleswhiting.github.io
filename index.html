@@ -5,89 +5,141 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kyle Whiting</title>
   <style>
+    :root {
+      --font-display: 2.7rem;
+      --font-section: 1.25rem;
+      --font-text: 1.0625rem;
+      --font-subtext: 0.875rem;
+      --color-bg: #000;
+      --color-text: #fff;
+      --color-link: #60a5fa;
+      --color-muted: rgba(255, 255, 255, 0.8);
+      --color-soft: rgba(255, 255, 255, 0.65);
+      --section-gap: 3.5rem;
+      --intro-gap: 0.95rem;
+      --indent-size: 0.85rem;
+    }
+
     html {
       scroll-behavior: smooth;
     }
 
     body {
       margin: 0;
-      background: #000;
-      color: #fff;
+      background: var(--color-bg);
+      color: var(--color-text);
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.6;
     }
 
     a {
-      color: #60a5fa;
+      color: var(--color-link);
       text-decoration: underline;
     }
 
     main {
       max-width: 42rem;
-      padding: 1.5rem 1rem 2.5rem;
+      padding: 1.5rem 1rem 3rem;
     }
 
     header {
-      font-size: 0.875rem;
-      line-height: 1.75;
+      font-size: var(--font-subtext);
+      line-height: 1.65;
     }
 
     .nav-sep {
-      color: rgba(255, 255, 255, 0.65);
+      color: var(--color-soft);
     }
 
     .intro {
       margin-top: 2rem;
       max-width: 36rem;
+      display: flex;
+      flex-direction: column;
+      gap: var(--intro-gap);
     }
 
     h1 {
       margin: 0;
-      font-size: 1.5rem;
-      line-height: 1.2;
+      font-size: var(--font-display);
+      line-height: 1.05;
       font-weight: 700;
     }
 
-    .tagline {
-      margin-top: 0.25rem;
-      font-size: 0.875rem;
-      color: rgba(255, 255, 255, 0.85);
+    .tagline,
+    .booking-line,
+    .link-list,
+    .section-body,
+    .entry-title,
+    .profile-link {
+      font-size: var(--font-text);
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    .tagline,
+    .booking-line {
+      line-height: 1.45;
     }
 
     .booking-line {
-      margin-top: 1rem;
-      max-width: 36rem;
-      font-size: 0.875rem;
-      color: rgba(255, 255, 255, 0.9);
+      font-style: italic;
+    }
+
+    .booking-line strong {
+      font-weight: 700;
+      font-style: italic;
+      text-decoration: underline;
+      color: var(--color-text);
     }
 
     .link-list {
       list-style: none;
       padding: 0;
-      margin: 1rem 0 0;
-      font-size: 0.875rem;
+      margin: 0;
+      line-height: 1.45;
     }
 
     .link-list li + li {
-      margin-top: 0.5rem;
+      margin-top: 0.55rem;
     }
 
     section {
-      margin-top: 2rem;
+      margin-top: var(--section-gap);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.55rem;
+    }
+
+    .section-header::after {
+      content: "----------------------------------------------------------------------------------------------------";
+      display: block;
+      flex: 1;
+      font-size: var(--font-subtext);
+      line-height: 1;
+      color: var(--color-soft);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: clip;
+      letter-spacing: 0;
+      font-weight: 400;
     }
 
     h2 {
-      margin: 0 0 0.25rem;
-      font-size: 0.875rem;
+      margin: 0;
+      font-size: var(--font-section);
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.04em;
+      line-height: 1.2;
     }
 
     .section-body {
       max-width: 36rem;
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 1rem;
+      line-height: 1.65;
     }
 
     .about p {
@@ -98,56 +150,70 @@
       margin-top: 1rem;
     }
 
-    .mix-profile-link {
-      font-size: 0.875rem;
-      color: rgba(255, 255, 255, 0.9);
-      margin-bottom: 0.1rem;
+    .profile-link {
+      margin: 0;
+      line-height: 1.35;
+    }
+
+    .profile-link > a {
+      font-weight: 700;
+    }
+
+    .profile-hint {
+      font-size: var(--font-subtext);
+      color: var(--color-muted);
     }
 
     .mix-list {
       list-style: none;
-      padding: 0;
-      margin: 0;
+      padding: 0 0 0 var(--indent-size);
+      margin: 0.75rem 0 0;
       max-width: 36rem;
     }
 
-    .mix-list li {
-      padding: 0.75rem 0;
+    .mix-list li + li {
+      margin-top: 1.4rem;
     }
 
-    .mix-title {
-      font-size: 1rem;
+    .entry-title {
       font-weight: 700;
+      line-height: 1.4;
     }
 
-    .mix-meta {
-      margin-top: 0.2rem;
-      font-size: 0.875rem;
-      color: rgba(255, 255, 255, 0.8);
-    }
-
-    .mix-note,
-    .plain-note,
-    .substack-summary {
-      margin-top: 0.5rem;
-      font-size: 0.875rem;
+    .entry-meta,
+    .entry-note,
+    footer {
+      font-size: var(--font-subtext);
       line-height: 1.7;
-      color: rgba(255, 255, 255, 0.9);
-      max-width: 36rem;
     }
 
-    .substack-entry,
-    .band-project {
+    .entry-meta {
+      margin-top: 0.25rem;
+      color: var(--color-muted);
+    }
+
+    .entry-note {
+      margin-top: 0.45rem;
       max-width: 36rem;
+      color: rgba(255, 255, 255, 0.9);
     }
 
     footer {
-      margin-top: 3rem;
-      padding-top: 0.5rem;
+      margin-top: 3.75rem;
       max-width: 36rem;
-      font-size: 0.75rem;
-      line-height: 1.6;
       color: rgba(255, 255, 255, 0.75);
+    }
+
+    @media (max-width: 640px) {
+      :root {
+        --font-display: 2.25rem;
+        --font-section: 1.125rem;
+        --font-text: 1rem;
+        --font-subtext: 0.875rem;
+        --section-gap: 3.25rem;
+        --intro-gap: 0.85rem;
+        --indent-size: 0.7rem;
+      }
     }
 
     @media (min-width: 640px) {
@@ -167,80 +233,87 @@
       <span class="nav-sep"> / </span>
       <a href="#bandvenuedate">[band] @ [venue] on [date]</a>
       <span class="nav-sep"> / </span>
-      <a href="#substack">substack</a>
+      <a href="#substack">Substack</a>
     </header>
 
     <section class="intro">
       <h1>I'm Kyle Whiting,</h1>
       <div class="tagline">an Alphabet City-based DJ / writer / music industry analyst.</div>
-      <div class="booking-line">For bookings &amp; other inquiries, reach out to kyleswhiting [@] gmail.com</div>
+      <div class="booking-line">For bookings &amp; other inquiries, reach out to <strong>kyleswhiting [@] gmail.com</strong></div>
 
       <ul class="link-list">
-        <li><a href="https://www.instagram.com/kywhiting/" target="_blank" rel="noreferrer">instagram</a></li>
-        <li><a href="https://soundcloud.com/kyle-whiting-967766456" target="_blank" rel="noreferrer">soundcloud</a></li>
+        <li><a href="https://www.instagram.com/kywhiting/" target="_blank" rel="noreferrer">Instagram</a></li>
+        <li><a href="https://soundcloud.com/kyle-whiting-967766456" target="_blank" rel="noreferrer">Soundcloud</a></li>
         <li><a href="https://www.instagram.com/bandvenuedate.nyc/" target="_blank" rel="noreferrer">[band] @ [venue] on [date]</a></li>
-        <li><a href="https://kylewhiting.substack.com" target="_blank" rel="noreferrer">substack</a></li>
-        <li><a href="https://www.linkedin.com/in/kylewhiting/" target="_blank" rel="noreferrer">linkedin</a></li>
+        <li><a href="https://kylewhiting.substack.com" target="_blank" rel="noreferrer">Substack</a></li>
+        <li><a href="https://www.linkedin.com/in/kylewhiting/" target="_blank" rel="noreferrer">LinkedIn</a></li>
       </ul>
     </section>
 
     <section id="about">
-      <h2>about</h2>
+      <div class="section-header"><h2>about</h2></div>
       <div class="section-body about">
         <p>I am an Alphabet City-based DJ, writer, record collector, and music industry analyst.</p>
-        <p>I approach DJing as a listener and a curator above all else. I am especially drawn to modern downtempo &amp; ambient, but am equally interested in classic disco, italo, and house.</p>
-        <p>I have a monthly show at Hi-Note Radio, broadcasting out of Alphabet City, called Bringing the Dawn In. I've also played at venues around Manhattan and Brooklyn including <a href="https://www.instagram.com/oldflingsnyc/" target="_blank" rel="noreferrer">Old Flings</a>, <a href="https://www.instagram.com/treasureclubnyc/" target="_blank" rel="noreferrer">Treasure Club</a>, <a href="https://www.instagram.com/babysallright/" target="_blank" rel="noreferrer">Baby's All Right</a>, <a href="https://www.instagram.com/night_club_101/" target="_blank" rel="noreferrer">Night Club 101</a>, <a href="https://www.instagram.com/ledivenyc/" target="_blank" rel="noreferrer">Le Dive</a>, <a href="https://www.instagram.com/million.goods/" target="_blank" rel="noreferrer">Million Goods</a>, and more.</p>
+        <p>I approach DJing as a listener and a curator above all else. I am especially drawn to <a href="https://soundcloud.com/kyle-whiting-967766456/sets/downtempo-ambient-mixes" target="_blank" rel="noreferrer">modern downtempo &amp; ambient</a>, but am equally interested in <a href="https://soundcloud.com/kyle-whiting-967766456/sets/disco-plus" target="_blank" rel="noreferrer">classic disco, italo, and house</a>.</p>
+        <p>I have a monthly show at Hi-Note Radio, broadcasting out of Alphabet City, called 'Bringing the Dawn In'. I've also played at venues around Manhattan and Brooklyn including <a href="https://www.instagram.com/oldflingsnyc/" target="_blank" rel="noreferrer">Old Flings</a>, <a href="https://www.instagram.com/treasureclubnyc/" target="_blank" rel="noreferrer">Treasure Club</a>, <a href="https://www.instagram.com/babysallright/" target="_blank" rel="noreferrer">Baby's All Right</a>, <a href="https://www.instagram.com/night_club_101/" target="_blank" rel="noreferrer">Night Club 101</a>, <a href="https://www.instagram.com/ledivenyc/" target="_blank" rel="noreferrer">Le Dive</a>, <a href="https://www.instagram.com/million.goods/" target="_blank" rel="noreferrer">Million Goods</a>, and more.</p>
         <p><a href="https://www.linkedin.com/in/kylewhiting/" target="_blank" rel="noreferrer">Professionally</a>, I have worked at some of the most prominent record labels, music streaming platforms, media organizations, and radio stations in the world.</p>
       </div>
     </section>
 
     <section id="mixes">
-      <h2>mixes</h2>
-      <div class="mix-profile-link"><a href="https://soundcloud.com/kyle-whiting-967766456" target="_blank" rel="noreferrer">soundcloud</a></div>
+      <div class="section-header"><h2>mixes</h2></div>
+      <div class="profile-link">
+        <a href="https://soundcloud.com/kyle-whiting-967766456" target="_blank" rel="noreferrer">Soundcloud</a>
+        <span class="profile-hint">(select mixes below ⌄⌄⌄)</span>
+      </div>
       <ul class="mix-list">
         <li>
-          <div class="mix-title"><a href="https://www.youtube.com/watch?v=7jokaJAiokE" target="_blank" rel="noreferrer">An NYC Experimental &amp; Avant-Garde [Vinyl Mix] by Kyle Whiting (4K)</a></div>
-          <div class="mix-meta">YouTube / Lower East Record Club</div>
-          <div class="mix-note">Experimental and avant-garde vinyl mix, hosted by Lower East Record Club.</div>
+          <div class="entry-title"><a href="https://www.youtube.com/watch?v=7jokaJAiokE" target="_blank" rel="noreferrer">An NYC Experimental &amp; Avant-Garde [Vinyl Mix] by Kyle Whiting (4K)</a></div>
+          <div class="entry-meta">YouTube / Lower East Record Club</div>
+          <div class="entry-note">Experimental and avant-garde vinyl mix, hosted by Lower East Record Club.</div>
         </li>
         <li>
-          <div class="mix-title"><a href="https://soundcloud.com/kyle-whiting-967766456/for-david-lynch" target="_blank" rel="noreferrer">For David Lynch</a></div>
-          <div class="mix-meta">SoundCloud / January 21, 2025</div>
-          <div class="mix-note">David Lynch tribute mix.</div>
+          <div class="entry-title"><a href="https://soundcloud.com/kyle-whiting-967766456/for-david-lynch" target="_blank" rel="noreferrer">For David Lynch</a></div>
+          <div class="entry-meta">Soundcloud / January 21, 2025</div>
+          <div class="entry-note">David Lynch tribute mix.</div>
         </li>
         <li>
-          <div class="mix-title"><a href="https://soundcloud.com/kyle-whiting-967766456/downtempo-mix-19" target="_blank" rel="noreferrer">Downtempo Mix #19 (Live for Hi-Note Radio, Jan 11, 2026)</a></div>
-          <div class="mix-meta">SoundCloud / January 15, 2026</div>
-          <div class="mix-note">Recorded live for Hi-Note Radio. Dubby downtempo and ambient bliss.</div>
+          <div class="entry-title"><a href="https://soundcloud.com/kyle-whiting-967766456/downtempo-mix-19" target="_blank" rel="noreferrer">Downtempo Mix #19 (Live for Hi-Note Radio, Jan 11, 2026)</a></div>
+          <div class="entry-meta">Soundcloud / January 15, 2026</div>
+          <div class="entry-note">Recorded live for Hi-Note Radio. Dubby downtempo and ambient bliss.</div>
         </li>
         <li>
-          <div class="mix-title"><a href="https://soundcloud.com/kyle-whiting-967766456/disco-mix-11" target="_blank" rel="noreferrer">Disco Mix #11</a></div>
-          <div class="mix-meta">SoundCloud / March 27, 2026</div>
-          <div class="mix-note">Funky house &amp; disco bangers.</div>
+          <div class="entry-title"><a href="https://soundcloud.com/kyle-whiting-967766456/disco-mix-11" target="_blank" rel="noreferrer">Disco Mix #11</a></div>
+          <div class="entry-meta">Soundcloud / March 27, 2026</div>
+          <div class="entry-note">Funky house &amp; disco bangers.</div>
         </li>
         <li>
-          <div class="mix-title"><a href="https://soundcloud.com/kyle-whiting-967766456/cocktail-hour-mix" target="_blank" rel="noreferrer">Blank x Chantelle x The Future Perfect</a></div>
-          <div class="mix-meta">SoundCloud / March 28, 2025</div>
-          <div class="mix-note">Mixed live by Kyle Whiting for the <a href="https://dirt.fyi/blank-homepage" target="_blank" rel="noreferrer">Blank</a> launch party, hosted by Chantelle &amp; The Future Perfect.</div>
+          <div class="entry-title"><a href="https://soundcloud.com/kyle-whiting-967766456/cocktail-hour-mix" target="_blank" rel="noreferrer">Blank x Chantelle x The Future Perfect</a></div>
+          <div class="entry-meta">Soundcloud / March 28, 2025</div>
+          <div class="entry-note">Mixed live by Kyle Whiting for the <a href="https://dirt.fyi/blank-homepage" target="_blank" rel="noreferrer">Blank</a> launch party, hosted by Chantelle &amp; The Future Perfect.</div>
         </li>
       </ul>
     </section>
 
     <section id="bandvenuedate">
-      <h2>[band] @ [venue] on [date]</h2>
-      <div class="band-project">
-        <div class="mix-title"><a href="https://www.instagram.com/bandvenuedate.nyc/" target="_blank" rel="noreferrer">instagram</a></div>
-        <div class="plain-note">I go to a lot of live music, and it is my firm belief that live music is the answer to all the existential questions raised by modern music technologies. This project aims to archive &amp; curate the best live music in NYC by posting recordings of past performances and recommendations for upcoming concerts, shows, and other live music-related events.</div>
-      </div>
+      <div class="section-header"><h2>[band] @ [venue] on [date]</h2></div>
+      <div class="entry-title"><a href="https://www.instagram.com/bandvenuedate.nyc/" target="_blank" rel="noreferrer">Instagram</a></div>
+      <div class="entry-note">I go to a lot of live music, and it is my firm belief that live music is the answer to all the existential questions raised by modern music technologies. This project aims to archive &amp; curate the best live music in NYC by posting recordings of past performances and recommendations for upcoming concerts, shows, and other live music-related events.</div>
     </section>
 
     <section id="substack">
-      <h2>substack</h2>
-      <div class="substack-entry">
-        <div class="mix-title"><a href="https://kylewhiting.substack.com/p/downtown-music" target="_blank" rel="noreferrer">Downtown Music</a></div>
-        <div class="mix-meta">Bringing the Dawn In / Substack / December 7, 2023</div>
-        <div class="substack-summary">Visual arts are to space as music is to time. Postmodern music rejects this essential, physical premise; minimalist composers like John Cage, Philip Glass, and Julius Eastman see time as a tool rather than a constraint. Taking influence from the minimalists, the punk, no-wave, and related avant-garde NYC scenes reject the preconceived notions of what music is or should be.</div>
+      <div class="section-header"><h2>Substack</h2></div>
+      <div class="profile-link">
+        <a href="https://kylewhiting.substack.com/" target="_blank" rel="noreferrer">Kyle's Musings on Music (and More)</a>
+        <span class="profile-hint">(select pieces below ⌄⌄⌄)</span>
       </div>
+      <ul class="mix-list">
+        <li>
+          <div class="entry-title"><a href="https://kylewhiting.substack.com/p/downtown-music" target="_blank" rel="noreferrer">Downtown Music</a></div>
+          <div class="entry-meta">Bringing the Dawn In / Substack / December 7, 2023</div>
+          <div class="entry-note">Visual arts are to space as music is to time. Postmodern music rejects this essential, physical premise; minimalist composers like John Cage, Philip Glass, and Julius Eastman see time as a tool rather than a constraint. Taking influence from the minimalists, the punk, no-wave, and related avant-garde NYC scenes reject the preconceived notions of what music is or should be.</div>
+        </li>
+      </ul>
     </section>
 
     <footer>
